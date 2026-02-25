@@ -26,6 +26,17 @@ int execute_command(char *command, char **args) {
     
     if (pid == 0)
     {
+        //Child Process
+    }
+    else if (pid > 0)
+    {
+        //Parent Process
+    }
+    else
+    {
+        perror("Fork Failed");
+        return -1;
+    }
         
     
 
