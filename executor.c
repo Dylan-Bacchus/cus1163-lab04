@@ -52,7 +52,13 @@ int execute_command(char *command, char **args) {
     // Otherwise return -1
     
     waitpid(pid, &status, 0);
-    
-
-    return -1;  // This line should be replaced by your TODO 3 code
+    if (WIFEXITED(status)) 
+    {
+        int exit_status = WEXITSTATUS(status);
+        printf("Child exited with status: %d\n", exit_status);
+    }
+    else
+    {
+        return -1;
+    }
 }
