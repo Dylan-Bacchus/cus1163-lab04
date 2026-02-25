@@ -24,6 +24,10 @@ int execute_command(char *command, char **args) {
     // Check if fork failed (pid < 0) and return -1 if so
     pid = fork();
     
+    if (pid == 0)
+    {
+        
+    
 
     // TODO 2: Child process - Execute the command
     // Check if we're in the child process (pid == 0)
