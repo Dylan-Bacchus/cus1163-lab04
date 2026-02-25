@@ -24,15 +24,7 @@ int execute_command(char *command, char **args) {
     // Check if fork failed (pid < 0) and return -1 if so
     pid = fork();
     
-    if (pid == 0)
-    {
-        //Child Process
-    }
-    else if (pid > 0)
-    {
-        //Parent Process
-    }
-    else
+    if (pid < 0)
     {
         perror("Fork Failed");
         return -1;
@@ -45,7 +37,7 @@ int execute_command(char *command, char **args) {
     // Call execvp(command, args) to transform into the target program
     // If execvp returns, it failed - print error and exit(1)
     // CRITICAL: Child must call exit(1), NOT return!
-
+    
 
     // TODO 3: Parent process - Wait for child to complete
     // Use waitpid(pid, &status, 0) to wait for the specific child
