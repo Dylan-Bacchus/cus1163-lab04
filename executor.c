@@ -37,13 +37,22 @@ int execute_command(char *command, char **args) {
     // Call execvp(command, args) to transform into the target program
     // If execvp returns, it failed - print error and exit(1)
     // CRITICAL: Child must call exit(1), NOT return!
+    if (pid == 0)
+    {
+        execvp(command, args);
+        // If we reach here, exec failed!
+        perror("execvp");
+        exit(1);
+    }
     
-
     // TODO 3: Parent process - Wait for child to complete
     // Use waitpid(pid, &status, 0) to wait for the specific child
     // Check if child exited normally with WIFEXITED(status)
     // If yes, return the exit code with WEXITSTATUS(status)
     // Otherwise return -1
+    
+    waitpid(pid, &status, 0);
+    
 
     return -1;  // This line should be replaced by your TODO 3 code
 }
